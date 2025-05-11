@@ -1,0 +1,82 @@
+/* src/style/ColorPalette.module.css */
+
+.grid {
+    display: grid;
+    gap: 1rem;
+    /* デフォルト（最小幅）：3 列 → 3,3,3,3,2 の分割 */
+    grid-template-columns: repeat(3, 1fr);
+}
+
+@media (min-width: 600px) {
+
+    /* やや広い画面：4 列 → 4,4,3 の分割 */
+    .grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (min-width: 900px) {
+
+    /* 中くらいの画面：6 列 → 6,5 の分割 */
+    .grid {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+@media (min-width: 1200px) {
+
+    /* 広い画面：11 列 → 11 の分割 */
+    .grid {
+        grid-template-columns: repeat(11, 1fr);
+    }
+}
+
+/* ColorPalette.module.css に追加 */
+.swatchWrapper {
+    position: relative;
+    cursor: pointer;
+}
+
+.swatch {
+    width: clamp(60px, 20vw, 90px);
+    aspect-ratio: 1 / 1;
+    border-radius: 4px;
+    box-sizing: border-box;
+    /* 境界線は透明な黒をデフォルト */
+    border: 3px solid rgba(0, 0, 0, 0.15);
+    /* ホバー時に少し浮き上がる演出 */
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.swatchWrapper:hover .swatch {
+    transform: scale(1.03);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+
+/* ラベル（shade数字）のスタイル */
+.label {
+    margin-top: 0.5rem;
+    /* 最小0.6rem～最大1remで可変 */
+    font-size: clamp(12px, 1vw, 24px);
+    color: #333;
+    text-align: center;
+}
+
+/* セクションの背景・余白 */
+.section {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 2rem;
+}
+
+/* タイトル */
+.title {
+    text-transform: capitalize;
+    text-align: center;
+    margin-bottom: 1rem;
+    /* 最小1.25rem～最大2remで可変 */
+    font-size: clamp(1.25rem, 2vw, 2rem);
+}

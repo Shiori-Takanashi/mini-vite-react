@@ -1,0 +1,21 @@
+# Node modules
+node_modules/
+
+# Build output
+dist/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# dotenv environment variables
+.env
+.env.*.local
+
+# VSCode settings (optional)
+.vscode/
+
+# macOS / Windows 系
+.DS_Store
+Thumbs.db
