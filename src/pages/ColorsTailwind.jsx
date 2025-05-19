@@ -1,13 +1,16 @@
 // src/pages/ColorPalette.jsx
 import colors from 'tailwindcss/colors';
-import styles from '../style/ColorPalette.module.css'; // CSS module の場合
-
-export const route = '/colors';
-export const label = 'Color Palette';
+import styles from '../style/ColorsTailwind.module.css'; // CSS module の場合
 
 
 
-export default function ColorPalette() {
+
+export const route = '/colorstailwind';
+export const label = 'Colors-Tailwind';
+
+
+
+export default function ColorsTailwind() {
     const palettes = Object.entries(colors)
         .filter(([_, v]) => typeof v === 'object');
 
@@ -28,7 +31,7 @@ export default function ColorPalette() {
         <div style={{ padding: '2rem' }}>
             {palettes.map(([name, shades]) => (
                 <section key={name} style={{ marginBottom: '2rem' }}>
-                    <h2 className={styles.title}>
+                    <h2 className={styles.title}  >
                         {name}
                     </h2>
                     <div className={styles.grid}>

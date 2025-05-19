@@ -2,7 +2,7 @@
 export function loadPages() {
 
 
-    const modulesObj = import.meta.glob('../pages/*.jsx', { eager: true });
+    const modulesObj = import.meta.glob('../pages/*.{js,jsx,ts,tsx}', { eager: true });
 
     return Object.entries(modulesObj)
         .sort(([a], [b]) => a.localeCompare(b))

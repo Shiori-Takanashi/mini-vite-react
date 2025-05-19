@@ -1,0 +1,93 @@
+/* src/style/ColorsChakraV2.module.css */
+
+/* グリッド構成 */
+.grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+@media (min-width: 600px) {
+    .grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (min-width: 900px) {
+    .grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+@media (min-width: 1200px) {
+    .grid {
+        grid-template-columns: repeat(10, 1fr);
+    }
+}
+
+/* セクション全体の装飾 */
+.section {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 6px;
+    /* margin-bottom は inline style で制御 */
+}
+
+/* セクションタイトル */
+.title {
+    text-transform: capitalize;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: clamp(1.25rem, 2vw, 2rem);
+}
+
+/* スウォッチの外枠 */
+.swatchWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: transparent;
+    padding: 4px;
+    border-radius: 6px;
+}
+
+/* ホバー時の浮き上がり演出 */
+.swatchWrapper:hover .swatch {
+    transform: scale(1.03);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* スウォッチ本体 */
+.swatch {
+    position: relative;
+    /* overlayLabel を絶対配置するため必須 */
+    width: clamp(60px, 20vw, 90px);
+    aspect-ratio: 1 / 1;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 4px;
+}
+
+/* 色名・番号のラベル（通常グループ） */
+.label {
+    margin-top: 0.25rem;
+    font-size: clamp(10px, 1vw, 12px);
+    color: #333;
+    text-align: center;
+}
+
+/* オーバーレイラベル（whiteAlpha専用） */
+.overlayLabel {
+    position: absolute;
+    top: 130%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    color: #000;
+    padding: 2px 6px;
+    font-size: 12px;
+    border-radius: 3px;
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 1;
+}

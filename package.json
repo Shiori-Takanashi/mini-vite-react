@@ -7,8 +7,14 @@
         "preview": "vite preview"
     },
     "dependencies": {
+        "@chakra-ui/react": "^2.10.7",
+        "@chakra-ui/theme": "^2.3.0",
+        "@emotion/react": "^11.14.0",
+        "@emotion/styled": "^11.14.0",
         "@heroicons/react": "^2.2.0",
+        "clsx": "^2.1.1",
         "color": "^5.0.0",
+        "framer-motion": "^12.10.5",
         "react": "^18.3.1",
         "react-dom": "^18.0.0",
         "react-icons": "^5.5.0",
@@ -17,7 +23,10 @@
         "tailwindcss": "^4.1.5"
     },
     "devDependencies": {
+        "@types/react": "^19.1.4",
+        "@types/react-dom": "^19.1.5",
         "@vitejs/plugin-react": "^4.0.0",
+        "typescript": "^5.8.3",
         "vite": "^5.0.0"
     }
 }

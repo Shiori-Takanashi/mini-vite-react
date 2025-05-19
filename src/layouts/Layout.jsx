@@ -1,31 +1,42 @@
-// src/layouts/Layout.jsx
 import { Outlet } from 'react-router-dom';
 import Header from '../components/Header';
+import Fotter from '../components/Fotter'; // 名前のtypoに注意（Footer が正）
+import { useEffect } from 'react';
+
 
 export default function Layout() {
+    useEffect(() => {
+        // 強制的にフォーカス解除
+        if (document.activeElement instanceof HTMLElement) {
+            document.activeElement.blur();
+        }
+    }, []);
     return (
+
         <div
             style={{
                 display: 'flex',
                 flexDirection: 'column',
-                height: '100vh',     // ビューポート全高を一度だけ指定
+                minHeight: '100vh', // ← ビューポート全体の高さ
             }}
         >
-            {/* 固定高さのヘッダー */}
             <div style={{ flex: '0 0 auto' }}>
                 <Header />
             </div>
 
-            {/* コンテンツ領域：残り高さをすべて使用し、必要に応じてスクロール */}
             <main
                 style={{
                     flex: 1,
                     overflowY: 'auto',
+                    padding: '1rem' // ← bodyにあたる余白
                 }}
             >
-                {/* pages/XXX.jsx がここにレンダリングされる */}
                 <Outlet />
             </main>
+
+            <div style={{ flex: '0 0 auto' }}>
+                <Fotter />
+            </div>
         </div>
     );
 }
