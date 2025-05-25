@@ -65,3 +65,5 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+# ローカルに当該ファイルを復元
