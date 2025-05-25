@@ -1,3 +1,8 @@
+# tree.py
+# このファイルは origin/main から復元されたものです（2025-05-25）
+# ローカルで一度削除されたが、リモートには残っていたため再取得
+# all-projects直下にコピーして使い回します。
+
 from pathlib import Path
 from typing import Tuple, Sequence
 
@@ -65,5 +70,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
-# ローカルに当該ファイルを復元
