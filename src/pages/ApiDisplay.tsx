@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { DNA } from 'react-loader-spinner';
 
-export const route = "/api-display";
+export const route = "/display";
 export const label = "API-Display";
 
 function getRandomInt(min: number, max: number) {
@@ -63,76 +63,6 @@ export default function ApiDisplay() {
         setTimeout(() => setLoading(false), Math.max(0, minLoadingTime));
     }, []);
 
-    /* 初回マウント */
-    useEffect(() => { allLoad(); }, [load]);
-
-    useEffect(() => {
-        // 初回ロード時はlocalStorageから既存のIDを取得
-        let idx = localStorage.getItem('pokemonId');
-        if (!idx) {
-            idx = getRandomInt(1, 1025).toString();
-            localStorage.setItem('pokemonId', idx);
-        }
-        const pokemonId = parseInt(idx);
-
-        loadPokemonData(pokemonId);
-    }, []);
-
-    const loadPokemonData = (pokemonId: number) => {
-        setIsLoading(true);
-        setPokemonName(null);
-        setPokemonImageUrl(null);
-        setIsPokemonImageLoaded(false);
-        setIsNameLoaded(false);
-
-        /* fetch01 - ポケモン名の取得 */
-        const fetchPokemonSpecies = async () => {
-            try {
-                const res = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemonId}`);
-                const data = await res.json();
-
-                const jaNameEntry = data.names.find(
-                    (entry: any) => entry.language.name === "ja-Hrkt"
-                );
-
-                setPokemonName(jaNameEntry?.name ?? "(不明)");
-                setIsNameLoaded(true);
-            } catch (err) {
-                console.error(err);
-                setPokemonName("(取得失敗)");
-                setIsNameLoaded(true);
-            }
-        };
-
-        /* fetch02 - ポケモン画像の取得 */
-        const fetchPokemonImage = async () => {
-            try {
-                const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
-                const data = await res.json();
-
-                const imgurl = data.sprites.other["official-artwork"].front_default;
-
-                setPokemonImageUrl(imgurl);
-                setIsPokemonImageLoaded(false); // 新しい画像URLがセットされたらfalseにリセット
-            } catch (err) {
-                console.error(err);
-                setPokemonImageUrl(null);
-                setIsPokemonImageLoaded(false);
-            } finally {
-                setIsLoading(false);
-            }
-        };
-        setTimeout(() => {
-            fetchPokemonSpecies();
-            fetchPokemonImage();
-        }, 1000);
-    };
-
-    const handleRefresh = () => {
-        const newPokemonId = getRandomInt(1, 1025);
-        localStorage.setItem('pokemonId', newPokemonId.toString());
-        loadPokemonData(newPokemonId);
-    };
 
     return (
         <div style={{
