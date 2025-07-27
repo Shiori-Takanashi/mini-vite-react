@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
-import Header from '../components/Header';
-import Fotter from '../components/Fotter'; // 名前のtypoに注意（Footer が正）
+import Header from './Header';
+import Fotter from './Fotter';
 import { useEffect } from 'react';
 
 
